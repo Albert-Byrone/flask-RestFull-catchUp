@@ -81,6 +81,7 @@ class PostData(Resource):
     response = response_serializer([post])
     return response, 200
 
+
 api.add_resource(PostList, "/posts")
 api.add_resource(PostData, "/posts/<int:id>")
 
