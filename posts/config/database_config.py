@@ -12,11 +12,14 @@ password = os.environ['DATABASE_PASSWORD']
 database_type = os.environ['DATABASE_TYPE']
 port = os.environ.get('DATABASE_PORT', 5432)
 
-db_url = f"{database_type}:{username}:{password}@{host}:{port}/{database}"
+
+# postgresql:albertbyrone:Albert254@localhost:5432/testtest
+# postgresql+psycopg2://scott:tiger@localhost:5432/mydatabase
+# db_url = f"{database_type}:{username}:{password}@{host}:{port}/{database}"
+db_url = f"{database_type}://{username}:{password}@{host}:{port}/{database}"
 
 
 engine = create_engine(db_url)
-print("Created emgine", engine)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
